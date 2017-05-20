@@ -18,12 +18,12 @@ function changeCount(fileName, count) { // takes in a file's name and the curren
 // Boiler Plate: Setting a variable to hold server operations
 var server = http.createServer(function(req, res) { // creates the server, taking in parameters for the request and a response
     if (req.url === "/") { // if the url provided in the request's argurment is equal to "/"...
-        fs.readFile("./cats.html", function(err, req) { // reads the provided file, and performs an error check, taking in the request
+        fs.readFile("./cats.html", function(err, data) { // reads the provided file, and performs an error check, taking in the data
             if (err) { // if an error exists...
                 console.log("There was an error with the cats page"); // console it,
                 return; // and return.
             } // ends if error statement
-            res.write(req); // provided there was no error, write the response based on the request,
+            res.write(data); // provided there was no error, write the data,
             count += 1; // the global variable is increased by one,
             changeCount('./nodeCount.html', count); // the above function is run to update the hits count in the provided file
             res.end(); // the response function ends
@@ -34,7 +34,6 @@ var server = http.createServer(function(req, res) { // creates the server, takin
                 console.log("There was an error with the count page"); // console it,
                 return; // and return.
             } // ends if error statement
-            res.write(count); // provided there was no error, write the response based on the count
             res.end(); // the response function ends
         }); // ends the file system's file reading function
     } // ends if/else-if statements 
