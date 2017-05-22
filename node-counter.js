@@ -34,6 +34,7 @@ var server = http.createServer(function(req, res) { // creates the server, takin
                 console.log("There was an error with the count page"); // console it,
                 return; // and return.
             } // ends if error statement
+            res.write(data);
             res.end(); // the response function ends
         }); // ends the file system's file reading function
     } // ends if/else-if statements 
